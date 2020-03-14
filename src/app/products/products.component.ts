@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './domain/product';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'jworks-products',
@@ -10,9 +11,10 @@ export class ProductsComponent implements OnInit {
 
   public data: Product[] = [];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.data = this.productService.getProducts();
   }
 
 }

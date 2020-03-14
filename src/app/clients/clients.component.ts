@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from './domain/client';
+import { ClientService } from './services/client.service';
 
 @Component({
   selector: 'jworks-clients',
@@ -10,9 +11,10 @@ export class ClientsComponent implements OnInit {
 
   data: Client[] = [];
 
-  constructor() { }
+  constructor(private clientService: ClientService) { }
 
   ngOnInit(): void {
+    this.data = this.clientService.getClients();
   }
 
 }
