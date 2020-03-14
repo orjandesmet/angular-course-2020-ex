@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from './domain/client';
 
 @Component({
   selector: 'jworks-clients',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsComponent implements OnInit {
+
+  data: Client[] = [];
 
   constructor() { }
 
