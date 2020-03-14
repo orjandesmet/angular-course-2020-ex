@@ -1,8 +1,8 @@
 <div class="flex flex-column full-height">
-  <!-- header goes here -->
+  <jworks-header [appTitle]="title" (toggle)="sidenav.toggle()"></jworks-header>
   <mat-sidenav-container class="flex-item">
     <mat-sidenav #sidenav mode="side">
-      <!-- sidebar goes here -->
+      <jworks-sidebar></jworks-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
       <main class="main">
