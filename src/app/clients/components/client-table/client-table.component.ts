@@ -19,7 +19,14 @@ export class ClientTableComponent implements AfterViewInit, OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name'];
 
-  @Input() data: Client[] = [];
+  private _data: Client[] = [];
+  @Input() set data(newData: Client[]) {
+    this._data = newData || [];
+    if (this.dataSource) {
+      this.dataSource.data = this._data;
+    }
+  }
+  get data() { return this._data; }
 
   ngOnInit() {
     this.dataSource = new ClientTableDataSource();

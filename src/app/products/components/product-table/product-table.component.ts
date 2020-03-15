@@ -19,7 +19,14 @@ export class ProductTableComponent implements AfterViewInit, OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name'];
 
-  @Input() data: Product[] = [];
+  private _data: Product[] = [];
+  @Input() set data(newData: Product[]) {
+    this._data = newData || [];
+    if (this.dataSource) {
+      this.dataSource.data = this._data;
+    }
+  }
+  get data() { return this._data; }
 
   ngOnInit() {
     this.dataSource = new ProductTableDataSource();

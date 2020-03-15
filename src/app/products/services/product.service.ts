@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from '../domain/product';
 
 @Injectable({
@@ -6,12 +8,27 @@ import { Product } from '../domain/product';
 })
 export class ProductService {
 
-  constructor() { }
+  API_URL = 'http://localhost:8080/products';
 
-  getProducts(): Product[] {
-    return [
-      { id: 'J01', name: 'My Product', description: 'My first product', productCode: 'jworks-0001'},
-      { id: 'J02', name: 'Tim\'s Product', description: 'Tim his first product', productCode: 'jworks-0002'}
-    ];
+  constructor(private httpClient: HttpClient) { }
+
+  getProducts(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.API_URL);
+  }
+
+  createProduct(product: Product) {
+    return this.httpClient.post<Product>(this.API_URL, product);
+  }
+
+  getProduct(id: string) {
+    return this.httpClient.get<Product>(`${this.API_URL}/${id}`);
+  }
+
+  updateProduct(product: Product) {
+    return this.httpClient.put<Product>(`${this.API_URL}/${product.id}`, product);
+  }
+
+  deleteProduct(id: string) {
+    return this.httpClient.delete(`${this.API_URL}/${id}`);
   }
 }

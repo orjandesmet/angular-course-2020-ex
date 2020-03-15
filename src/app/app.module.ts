@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,7 +29,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatIconModule,
     MatButtonModule,
     ProductsModule,
-    ClientsModule
+    ClientsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

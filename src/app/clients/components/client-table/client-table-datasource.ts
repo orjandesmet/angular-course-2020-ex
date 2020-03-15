@@ -1,7 +1,7 @@
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { merge, Observable, of as observableOf } from 'rxjs';
+import { BehaviorSubject, merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Client, clientFullName } from '../../domain/client';
 
@@ -15,7 +15,11 @@ const EXAMPLE_DATA: ClientTableItem[] = [];
  * (including sorting, pagination, and filtering).
  */
 export class ClientTableDataSource extends DataSource<ClientTableItem> {
-  data: ClientTableItem[] = EXAMPLE_DATA;
+  data$ = new BehaviorSubject<ClientTableItem[]>(EXAMPLE_DATA);
+  set data(newData: ClientTableItem[]) {
+    this.data$.next(newData || []);
+  }
+  get data() { return this.data$.getValue(); }
   paginator: MatPaginator;
   sort: MatSort;
 
@@ -32,7 +36,7 @@ export class ClientTableDataSource extends DataSource<ClientTableItem> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
-      observableOf(this.data),
+      this.data$.asObservable(),
       this.paginator.page,
       this.sort.sortChange
     ];
