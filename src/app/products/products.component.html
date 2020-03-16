@@ -1,1 +1,2 @@
-<jworks-product-table [data]="data"></jworks-product-table>
+<jworks-product-table [data]="data" (productSelect)="selectedProduct = $event"></jworks-product-table>
+<jworks-product-form (formSubmit)="onFormSubmit($event)" (deleteProduct)="onDeleteProduct($event)" [selectedProduct]="selectedProduct"></jworks-product-form>

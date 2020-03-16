@@ -19,4 +19,28 @@ export class ClientsComponent implements OnInit {
     });
   }
 
+  onFormSubmit(client: Client) {
+    if (!client.id) {
+      this.clientService.createClient(client).subscribe(newClient => {
+        this.data = this.data.concat(newClient);
+      }, error => {
+        alert(error);
+      });
+    } else {
+      this.clientService.updateClient(client).subscribe(newClient => {
+        this.data = this.data.map(oldClient => oldClient.id === client.id ? newClient : oldClient);
+      }, error => {
+        alert(error);
+      });
+    }
+  }
+
+  onDeleteClient(clientId: number) {
+    this.clientService.deleteClient(clientId).subscribe(_ => {
+      this.data = this.data.filter(client => client.id !== clientId);
+    }, error => {
+      alert(error);
+    });
+  }
+
 }

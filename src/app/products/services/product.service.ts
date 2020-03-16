@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../domain/product';
@@ -12,8 +12,12 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProducts(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this.API_URL);
+  getProducts(productCode?: string): Observable<Product[]> {
+    let params = new HttpParams();
+    if (productCode) {
+      params = params.set('productCode', productCode);
+    }
+    return this.httpClient.get<Product[]>(this.API_URL, { params });
   }
 
   createProduct(product: Product) {

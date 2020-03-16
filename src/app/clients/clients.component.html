@@ -1,1 +1,2 @@
-<jworks-client-table [data]="data"></jworks-client-table>
+<jworks-client-table [data]="data" (clientSelect)="selectedClient = $event"></jworks-client-table>
+<jworks-client-form (formSubmit)="onFormSubmit($event)" (deleteClient)="onDeleteClient($event)" [selectedClient]="selectedClient"></jworks-client-form>
