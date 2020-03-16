@@ -8,9 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClientsModule } from './clients/clients.module';
 import { HeaderComponent } from './header/header.component';
-import { ProductsModule } from './products/products.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 
@@ -28,8 +26,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    ProductsModule,
-    ClientsModule,
     HttpClientModule
   ],
   providers: [],

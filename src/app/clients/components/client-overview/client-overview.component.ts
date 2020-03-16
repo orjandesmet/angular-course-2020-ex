@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from '../../domain/client';
 import { ClientSandboxService } from '../../services/client-sandbox.service';
 
@@ -11,7 +12,11 @@ export class ClientOverviewComponent implements OnInit {
 
   clients$ = this.clientsSandbox.clients$;
 
-  constructor(private clientsSandbox: ClientSandboxService) { }
+  constructor(
+    private clientsSandbox: ClientSandboxService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.clientsSandbox.loadClients();
@@ -19,6 +24,7 @@ export class ClientOverviewComponent implements OnInit {
 
   onClientSelect(client: Client) {
     this.clientsSandbox.selectClient(client.id);
+    this.router.navigate(['./', client.id], { relativeTo: this.activatedRoute.parent });
   }
 
 }

@@ -12,6 +12,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductOverviewComponent } from './components/product-overview/product-overview.component';
 import { ProductTableComponent } from './components/product-table/product-table.component';
+import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
 
 
@@ -26,7 +27,8 @@ import { ProductsComponent } from './products.component';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProductsRoutingModule
   ],
   exports: [ProductsComponent]
 })

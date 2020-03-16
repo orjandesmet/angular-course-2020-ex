@@ -2,16 +2,24 @@ ul {
   list-style: none;
   padding-inline-start: 0;
 
-  li a {
-    text-decoration: none;
-    color: var(--primary);
+  li {
+    padding: 0.5rem 1rem;
 
-    &:hover {
-      color: var(--primary-light);
+    & + & {
+      margin-top: 0.5rem;
     }
 
-    &.active {
-      color: var(--accent);
+    a {
+      text-decoration: none;
+      color: var(--primary);
+
+      &:hover {
+        color: var(--primary-light);
+      }
+
+      &.active {
+        color: var(--accent);
+      }
     }
   }
 }

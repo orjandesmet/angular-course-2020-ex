@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { ClientsRoutingModule } from './clients-routing.module';
 import { ClientsComponent } from './clients.component';
 import { ClientDetailComponent } from './components/client-detail/client-detail.component';
 import { ClientFormComponent } from './components/client-form/client-form.component';
@@ -25,7 +26,8 @@ import { FullNamePipe } from './pipes/full-name.pipe';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClientsRoutingModule
   ],
   exports: [ClientsComponent]
 })
