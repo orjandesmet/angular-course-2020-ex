@@ -9,16 +9,11 @@ import { ProductService } from './services/product.service';
 })
 export class ProductsComponent implements OnInit {
 
-  public data: Product[] = [];
-
-  selectedProduct: Product;
+  data: Product[];
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(products => {
-      this.data = products;
-    });
   }
 
   onFormSubmit(product: Product) {

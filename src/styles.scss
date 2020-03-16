@@ -32,3 +32,12 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @import './app';
+
+
+
+:root {
+  --primary: #{map-get($jworks-demo-app-primary, 'default')};
+  --primary-light: #{map-get($jworks-demo-app-primary, 'lighter')};
+  --accent: #{map-get($jworks-demo-app-accent, 'default')};
+  --warn: #{map-get($jworks-demo-app-warn, 'default')};
+}
