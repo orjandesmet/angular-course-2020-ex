@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -8,7 +8,8 @@ import { ClientTableDataSource, ClientTableItem } from './client-table-datasourc
 @Component({
   selector: 'jworks-client-table',
   templateUrl: './client-table.component.html',
-  styleUrls: ['./client-table.component.scss']
+  styleUrls: ['./client-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClientTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;

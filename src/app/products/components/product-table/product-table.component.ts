@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -8,7 +8,8 @@ import { ProductTableDataSource, ProductTableItem } from './product-table-dataso
 @Component({
   selector: 'jworks-product-table',
   templateUrl: './product-table.component.html',
-  styleUrls: ['./product-table.component.scss']
+  styleUrls: ['./product-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
