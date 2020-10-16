@@ -25,4 +25,10 @@ describe('NewProductComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('onFormSubmit', () => {
+    it('should add the product with the sandbox and navigate', () => {
+      // TODO: ch10 - Add this test
+    })
+  });
 });

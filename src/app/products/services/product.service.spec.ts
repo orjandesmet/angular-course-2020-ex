@@ -16,4 +16,14 @@ describe('ProductService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  describe('getProducts', () => {
+    it('should not pass the parameter and return a list of products', () => {
+      // TODO: ch10 - Add this test
+    });
+
+    it('should pass the parameter and return a list of products', () => {
+      // TODO: ch10 - Add this test
+    });
+  });
 });

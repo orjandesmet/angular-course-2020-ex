@@ -63,12 +63,12 @@ describe('ProductValidationService', () => {
       });
     });
 
-    xit('TODO: bonus ch09 - should return the error when a product with a different id is in the first emission', () => {
-      // TODO: bonus ch09
+    xit('TODO: bonus ch10 - should return the error when a product with a different id is in the first emission', () => {
+      // TODO: bonus ch10
     });
 
-    xit('TODO: bonus ch09 - should return null when the product with the same id is in the first emission', () => {
-      // TODO: bonus ch09
+    xit('TODO: bonus ch10- should return null when the product with the same id is in the first emission', () => {
+      // TODO: bonus ch10
     });
   });
 });
