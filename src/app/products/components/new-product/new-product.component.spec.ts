@@ -1,6 +1,9 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Product } from '../../domain/product';
+import { ProductSandboxService } from '../../services/product-sandbox.service';
 import { NewProductComponent } from './new-product.component';
 
 
@@ -28,7 +31,14 @@ describe('NewProductComponent', () => {
 
   describe('onFormSubmit', () => {
     it('should add the product with the sandbox and navigate', () => {
-      // TODO: ch10 - Add this test
+      const sandboxService = fixture.debugElement.injector.get(ProductSandboxService);
+      spyOn(sandboxService, 'addProduct');
+      const router = fixture.debugElement.injector.get(Router);
+      spyOn(router, 'navigate');
+      const product: Product = { id: '', name: '', description: '', productCode: '' };
+      component.onFormSubmit(product);
+      expect(sandboxService.addProduct).toHaveBeenCalledWith(product);
+      expect(router.navigate).toHaveBeenCalled();
     })
   });
 });
