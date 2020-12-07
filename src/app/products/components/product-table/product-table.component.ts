@@ -18,9 +18,11 @@ export class ProductTableComponent implements AfterViewInit, OnInit {
   dataSource: ProductTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'name', 'productcode', 'actions'];
 
   @Output() productSelect = new EventEmitter<ProductTableItem>();
+  @Output() edit = new EventEmitter<ProductTableItem>();
+  @Output() delete = new EventEmitter<ProductTableItem>();
 
   private _data: Product[] = [];
   @Input() set data(newData: Product[]) {

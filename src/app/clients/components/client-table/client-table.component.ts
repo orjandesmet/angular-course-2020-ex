@@ -18,9 +18,11 @@ export class ClientTableComponent implements AfterViewInit, OnInit {
   dataSource: ClientTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'name', 'actions'];
 
   @Output() clientSelect = new EventEmitter<ClientTableItem>();
+  @Output() edit = new EventEmitter<ClientTableItem>();
+  @Output() delete = new EventEmitter<ClientTableItem>();
 
   private _data: Client[] = [];
   @Input() set data(newData: Client[]) {

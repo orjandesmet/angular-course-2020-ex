@@ -27,4 +27,18 @@ export class ClientOverviewComponent implements OnInit {
     this.router.navigate(['./', client.id], { relativeTo: this.activatedRoute.parent });
   }
 
+  onAdd() {
+    // Add a client here
+  }
+
+  onEdit(client: Client) {
+    // Open the dialog for edit
+    console.log(client);
+  }
+
+  onDelete(client: Client) {
+    // Delete the selected client
+    this.clientsSandbox.deleteClient(client.id);
+  }
+
 }

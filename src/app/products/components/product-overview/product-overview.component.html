@@ -1,2 +1,2 @@
-<h3>Product overview</h3>
-<jworks-product-table [data]="products$ | async" (productSelect)="onProductSelect($event)"></jworks-product-table>
+<h3>Product overview <button mat-mini-fab color="primary" (click)="onAdd()">+</button></h3>
+<jworks-product-table [data]="products$ | async" (productSelect)="onProductSelect($event)" (delete)="onDelete($event)" (edit)="onEdit($event)"></jworks-product-table>

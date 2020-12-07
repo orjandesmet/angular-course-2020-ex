@@ -27,4 +27,17 @@ export class ProductOverviewComponent implements OnInit {
     this.router.navigate(['./', product.id], { relativeTo: this.activatedRoute.parent });
   }
 
+  onAdd() {
+    // TODO add a product here
+  }
+
+  onEdit(product: Product) {
+    // Open the dialog for edit
+    console.log(product);
+  }
+
+  onDelete(product: Product) {
+    this.productsSandbox.deleteProduct(product.id);
+  }
+
 }

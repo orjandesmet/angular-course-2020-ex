@@ -1,2 +1,2 @@
-<h3>Client overview</h3>
-<jworks-client-table [data]="clients$ | async" (clientSelect)="onClientSelect($event)"></jworks-client-table>
+<h3>Client overview <button mat-mini-fab color="primary" (click)="onAdd()">+</button></h3>
+<jworks-client-table [data]="clients$ | async" (clientSelect)="onClientSelect($event)" (delete)="onDelete($event)" (edit)="onEdit($event)"></jworks-client-table>
