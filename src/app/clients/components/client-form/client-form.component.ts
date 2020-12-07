@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Client } from '../../domain/client';
 
 @Component({
@@ -20,35 +21,25 @@ export class ClientFormComponent implements OnInit {
     zip: ['']
   });
 
-  @Output() formSubmit = new EventEmitter<Client>();
-  @Output() deleteClient = new EventEmitter<string>();
-  @Input() set selectedClient(client: Client) {
-    if (this.clientForm) {
-      if (client) {
-        this.clientForm.patchValue(client);
-      } else {
-        this.clientForm.reset();
-      }
-    }
-  }
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) private data: { selectedClient: Client },
+    private matDialogRef: MatDialogRef<ClientFormComponent, Client>,
+  ) { }
 
   ngOnInit(): void {
+    if (this.data?.selectedClient) {
+      this.clientForm.patchValue(this.data?.selectedClient);
+    } else {
+      this.clientForm.reset();
+    }
   }
 
   onSubmit() {
     if (this.clientForm.valid) {
-      this.formSubmit.emit(this.clientForm.value);
+      this.matDialogRef.close(this.clientForm.value);
     } else {
       this.clientForm.markAllAsTouched();
-    }
-  }
-
-  onDeleteClicked() {
-    if (this.clientForm.get('id').value) {
-      this.deleteClient.emit(this.clientForm.get('id').value);
-      this.clientForm.reset();
     }
   }
 

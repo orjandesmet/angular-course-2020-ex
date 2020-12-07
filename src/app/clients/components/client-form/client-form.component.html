@@ -1,5 +1,4 @@
 <form [formGroup]="clientForm" novalidate (ngSubmit)="onSubmit()">
-  <mat-card class="form-card">
     <mat-card-title>
       <h4>{{ clientForm.get('id').value ? 'Edit ' + (clientForm.value | fullName) : 'Add new client' }}</h4>
     </mat-card-title>
@@ -35,7 +34,5 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" type="submit">Submit</button>
-      <button mat-raised-button color="warn" type="button" *ngIf="clientForm.get('id').value" (click)="onDeleteClicked()">Delete</button>
     </mat-card-actions>
-  </mat-card>
 </form>

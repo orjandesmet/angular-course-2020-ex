@@ -1,5 +1,4 @@
 <form [formGroup]="productForm" novalidate (ngSubmit)="onSubmit()">
-  <mat-card class="form-card">
     <mat-card-title>
       <h4>{{ productForm.get('id').value ? 'Edit ' + productForm.get('name').value : 'Add new product' }}</h4>
     </mat-card-title>
@@ -17,7 +16,5 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" type="submit">Submit</button>
-      <button mat-raised-button color="warn" type="button" *ngIf="productForm.get('id').value" (click)="onDeleteClicked()">Delete</button>
     </mat-card-actions>
-  </mat-card>
 </form>

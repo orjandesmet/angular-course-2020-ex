@@ -22,12 +22,20 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
       <td mat-cell *matCellDef="let row">
-        <!-- Actions go here -->
+        <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="edit.emit(row)">
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="delete.emit(row)">
+            <span>Delete</span>
+          </button>
+        </mat-menu>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="productSelect.emit(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator #paginator

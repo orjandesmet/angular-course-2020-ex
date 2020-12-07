@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from '../../domain/product';
 import { ProductValidationService } from '../../services/product-validation.service';
 
@@ -18,39 +19,27 @@ export class ProductFormComponent implements OnInit {
     productCode: ['', null, this.productValidationService.productCodeInUse]
   });
 
-  @Output() formSubmit = new EventEmitter<Product>();
-  @Output() deleteProduct = new EventEmitter<string>();
-  @Input() set selectedProduct(product: Product) {
-    if (this.productForm) {
-      if (product) {
-        this.productForm.patchValue(product);
-      } else {
-        this.productForm.reset();
-      }
-    }
-    this.productValidationService.currentId = product?.id;
-  }
-
   constructor(
     private formBuilder: FormBuilder,
-    private productValidationService: ProductValidationService
+    private productValidationService: ProductValidationService,
+    @Inject(MAT_DIALOG_DATA) private data: { selectedProduct: Product },
+    private matDialogRef: MatDialogRef<ProductFormComponent, Product>,
   ) { }
 
   ngOnInit(): void {
+    if (this.data?.selectedProduct) {
+      this.productForm.patchValue(this.data?.selectedProduct);
+      this.productValidationService.currentId = this.data?.selectedProduct.id;
+    } else {
+      this.productForm.reset();
+    }
   }
 
   onSubmit() {
     if (this.productForm.valid) {
-      this.formSubmit.emit(this.productForm.value);
+      this.matDialogRef.close(this.productForm.value);
     } else {
       this.productForm.markAllAsTouched();
-    }
-  }
-
-  onDeleteClicked() {
-    if (this.productForm.get('id').value) {
-      this.deleteProduct.emit(this.productForm.get('id').value);
-      this.productForm.reset();
     }
   }
 }

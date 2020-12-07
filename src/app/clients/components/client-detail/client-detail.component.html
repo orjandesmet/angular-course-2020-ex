@@ -1,2 +1,17 @@
-<h3>Client details</h3>
-<jworks-client-form (formSubmit)="onFormSubmit($event)" (deleteClient)="onDeleteClient($event)" [selectedClient]="selectedClient$ | async"></jworks-client-form>
+<h3>{{ client?.firstName }} details</h3>
+<p>
+  <strong>Full name: </strong>
+  <span>{{ client?.firstName }} {{ client?.lastName }}</span>
+</p>
+<p>
+  <strong>Email: </strong>
+  <span>{{ client?.email }}</span>
+</p>
+<p>
+  <strong>Birthday: </strong>
+  <span>{{ client?.birthday }}</span>
+</p>
+<p>
+  <strong>City: </strong>
+  <span>{{ client?.city }} ({{ client?.zip }})</span>
+</p>
